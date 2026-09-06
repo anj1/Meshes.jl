@@ -64,7 +64,7 @@ function intersection(f, box₁::Box{🌐}, box₂::Box{🌐})
     v = withcrs(box₁, (latₑ, lonₑ))
     iscorner ? u : Box(u, v)
   end
-  geom = length(geoms) == 1 ? only(geoms) : Multi(geoms)
+  geom = maybemulti(geoms)
 
   if overlaps
     return @IT Overlapping geom f
